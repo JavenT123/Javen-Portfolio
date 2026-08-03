@@ -4,233 +4,123 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Javen Turner — IT &amp; Cybersecurity Professional</title>
-<meta name="description" content="Javen Turner — IT Support Specialist pursuing Cybersecurity Engineering. Microsoft 365, Azure, Entra ID, networking, and security operations.">
 <style>
-  :root{
-    --bg:#ffffff;
-    --bg-2:#f5f5f7;
-    --bg-3:#fafafa;
-    --card:rgba(255,255,255,0.6);
-    --card-border:rgba(0,0,0,0.08);
-    --text:#1d1d1f;
-    --text-dim:#6e6e73;
-    --text-faint:#a1a1a6;
-    --accent:#0066ff;
-    --accent-dim:#e8f0ff;
-    --line:rgba(0,0,0,0.08);
-    --mono:'SF Mono','SFMono-Regular',ui-monospace,Menlo,Consolas,monospace;
-    --sans:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Arial,sans-serif;
-    --shadow:0 20px 60px -20px rgba(0,0,0,0.12);
-  }
-  [data-theme="dark"]{
-    --bg:#000000;
-    --bg-2:#0a0a0c;
-    --bg-3:#111114;
-    --card:rgba(255,255,255,0.05);
-    --card-border:rgba(255,255,255,0.1);
-    --text:#f5f5f7;
-    --text-dim:#a1a1a6;
-    --text-faint:#6e6e73;
-    --accent:#3b9cff;
-    --accent-dim:#0d1f33;
-    --line:rgba(255,255,255,0.1);
-    --shadow:0 20px 60px -20px rgba(0,0,0,0.6);
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);color:var(--text);font-family:var(--sans);
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-    transition:background .4s ease,color .4s ease;
-  }
-  a{color:inherit;text-decoration:none;}
-  ::selection{background:var(--accent);color:#fff;}
-
+  :root{--bg:#fff;--bg-2:#f5f5f7;--card:rgba(255,255,255,0.6);--card-border:rgba(0,0,0,0.08);--text:#1d1d1f;--text-dim:#6e6e73;--text-faint:#a1a1a6;--accent:#0066ff;--line:rgba(0,0,0,0.08);--mono:'SF Mono',ui-monospace,Menlo,monospace;--sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;--shadow:0 20px 60px -20px rgba(0,0,0,0.12);}
+  [data-theme="dark"]{--bg:#000;--bg-2:#0a0a0c;--card:rgba(255,255,255,0.05);--card-border:rgba(255,255,255,0.1);--text:#f5f5f7;--text-dim:#a1a1a6;--text-faint:#6e6e73;--accent:#3b9cff;--line:rgba(255,255,255,0.1);--shadow:0 20px 60px -20px rgba(0,0,0,0.6);}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s;}
+  a{color:inherit;text-decoration:none;}::selection{background:var(--accent);color:#fff;}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
-  .reveal.in{opacity:1;transform:translateY(0);}
-  .reveal-blur{opacity:0;filter:blur(8px);transform:translateY(16px);transition:opacity .9s cubic-bezier(.22,1,.36,1),filter .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
-  .reveal-blur.in{opacity:1;filter:blur(0);transform:translateY(0);}
+  .reveal.in{opacity:1;transform:none;}
 
-  /* ===== NAV ===== */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:200;
-    background:color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter:blur(20px) saturate(180%);
-    -webkit-backdrop-filter:blur(20px) saturate(180%);
-    border-bottom:1px solid var(--line);
-    transition:background .4s ease,border-color .4s ease;
-  }
-  .nav-inner{
-    max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;
-  }
-  .nav-logo{font-size:15px;font-weight:600;letter-spacing:-0.01em;}
-  .nav-logo span{color:var(--accent);}
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
+  .nav-logo{font-size:15px;font-weight:600;}.nav-logo span{color:var(--accent);}
   .nav-links{display:flex;gap:28px;align-items:center;}
-  .nav-links a.nav-item{font-size:13px;color:var(--text-dim);font-weight:500;transition:color .2s ease;}
-  .nav-links a.nav-item:hover{color:var(--text);}
-  .theme-toggle{
-    width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;cursor:pointer;
-    background:var(--card);transition:all .25s ease;font-size:14px;
-  }
-  .theme-toggle:hover{border-color:var(--accent);}
+  .nav-links a{font-size:13px;color:var(--text-dim);font-weight:500;transition:color .2s;}.nav-links a:hover{color:var(--text);}
+  .theme-toggle{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;background:var(--card);font-size:14px;transition:all .25s;}.theme-toggle:hover{border-color:var(--accent);}
 
-  /* ===== HERO ===== */
-  .hero{
-    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:160px 24px 100px;position:relative;
-  }
-  .hero-bg{
-    position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;
-  }
-  .orb{
-    position:absolute;border-radius:50%;filter:blur(60px);opacity:0.5;
-    background:radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    animation:float 18s ease-in-out infinite;
-  }
-  .orb1{width:480px;height:480px;top:-180px;left:-160px;animation-delay:0s;}
-  .orb2{width:380px;height:380px;bottom:-140px;right:-120px;animation-delay:4s;opacity:0.3;}
-  @keyframes float{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(30px,-40px) scale(1.08);}
-  }
-  .eyebrow{
-    font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:24px;position:relative;z-index:1;
-  }
-  .hero h1{
-    font-size:clamp(42px,7.5vw,88px);font-weight:600;letter-spacing:-0.03em;line-height:1.04;
-    max-width:920px;position:relative;z-index:1;
-  }
-  .hero h1 .grad{
-    background:linear-gradient(100deg,var(--text) 30%,var(--accent) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .hero p.sub{
-    margin-top:28px;font-size:clamp(16px,2vw,21px);color:var(--text-dim);
-    max-width:600px;line-height:1.55;font-weight:400;position:relative;z-index:1;
-  }
-  .hero-cta{margin-top:40px;display:flex;gap:14px;position:relative;z-index:1;flex-wrap:wrap;justify-content:center;}
-  .btn{
-    padding:13px 26px;border-radius:980px;font-size:14px;font-weight:500;
-    transition:all .25s cubic-bezier(.22,1,.36,1);display:inline-flex;align-items:center;gap:6px;
-  }
-  .btn-primary{background:var(--accent);color:#fff;}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -8px color-mix(in srgb, var(--accent) 50%, transparent);}
-  .btn-secondary{border:1px solid var(--line);color:var(--text);background:var(--card);}
-  .btn-secondary:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px 24px 100px;position:relative;}
+  .hero-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;overflow:hidden;pointer-events:none;z-index:0;}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45;background:radial-gradient(circle,var(--accent) 0%,transparent 70%);animation:float 18s ease-in-out infinite;}
+  .orb1{width:60vw;height:60vw;max-width:800px;max-height:800px;top:-20%;left:-15%;}.orb2{width:45vw;height:45vw;max-width:600px;max-height:600px;bottom:-15%;right:-10%;opacity:.25;animation-delay:4s;}
+  @keyframes float{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,-40px) scale(1.08);}}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;position:relative;z-index:2;}
+  .hero h1{font-size:clamp(42px,7.5vw,88px);font-weight:600;letter-spacing:-0.03em;line-height:1.04;max-width:920px;position:relative;z-index:2;}
+  .grad{background:linear-gradient(100deg,var(--text) 30%,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.sub{margin-top:28px;font-size:clamp(16px,2vw,21px);color:var(--text-dim);max-width:600px;line-height:1.55;position:relative;z-index:2;}
+  .hero-cta{margin-top:40px;display:flex;gap:14px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center;}
+  .btn{padding:13px 26px;border-radius:980px;font-size:14px;font-weight:500;transition:all .25s cubic-bezier(.22,1,.36,1);display:inline-flex;align-items:center;gap:6px;}
+  .btn-primary{background:var(--accent);color:#fff;}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px -8px color-mix(in srgb,var(--accent) 50%,transparent);}
+  .btn-secondary{border:1px solid var(--line);color:var(--text);background:var(--card);}.btn-secondary:hover{border-color:var(--accent);transform:translateY(-2px);}
 
-  .scroll-cue{
-    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-    font-family:var(--mono);font-size:11px;color:var(--text-faint);
-    display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1;
-  }
-  .scroll-cue::after{
-    content:'';width:1px;height:24px;background:linear-gradient(to bottom, var(--text-faint), transparent);
-    animation:scrollPulse 2s ease-in-out infinite;
-  }
-  @keyframes scrollPulse{0%,100%{opacity:.3;}50%{opacity:1;}}
-
-  /* ===== SECTION shared ===== */
-  section{padding:130px 24px;max-width:1120px;margin:0 auto;position:relative;}
+  section{padding:130px 24px;max-width:1120px;margin:0 auto;}
   .section-head{margin-bottom:60px;max-width:680px;}
-  .section-eyebrow{
-    font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;
-    text-transform:uppercase;margin-bottom:14px;
-  }
+  .section-eyebrow{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
   .section-head h2{font-size:clamp(30px,4.2vw,46px);font-weight:600;letter-spacing:-0.025em;line-height:1.12;}
   .section-head p{margin-top:18px;font-size:17px;color:var(--text-dim);line-height:1.65;}
 
-  /* ===== ABOUT ===== */
   .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start;}
   .about-text p{font-size:17px;line-height:1.75;color:var(--text-dim);margin-bottom:20px;}
   .about-text strong{color:var(--text);font-weight:600;}
-  .focus-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
-  .focus-item{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 0;border-bottom:1px solid var(--line);font-size:14.5px;
-  }
+  .focus-list{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+  .focus-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);font-size:14.5px;}
   .focus-item span:first-child{color:var(--text);font-weight:500;}
   .focus-item span:last-child{font-family:var(--mono);font-size:12px;color:var(--text-faint);}
 
-  /* ===== SKILLS ===== */
   .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:24px;overflow:hidden;}
-  .skill-cat{background:var(--bg);padding:32px 26px;transition:background .3s ease;}
-  .skill-cat:hover{background:var(--bg-2);}
+  .skill-cat{background:var(--bg);padding:32px 26px;transition:background .3s;}.skill-cat:hover{background:var(--bg-2);}
   .skill-cat .icon{font-size:20px;margin-bottom:16px;color:var(--accent);}
   .skill-cat h4{font-size:15px;font-weight:600;margin-bottom:14px;}
-  .skill-cat ul{list-style:none;}
-  .skill-cat li{font-size:13px;color:var(--text-dim);padding:5px 0;}
+  .skill-cat ul{list-style:none;}.skill-cat li{font-size:13px;color:var(--text-dim);padding:5px 0;}
 
-  /* ===== CERTS ===== */
   .certs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .cert-card{
-    background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:30px;
-    transition:all .3s cubic-bezier(.22,1,.36,1);
-  }
+  .cert-card{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:30px;transition:all .3s cubic-bezier(.22,1,.36,1);}
   .cert-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--accent);}
-  .cert-status{
-    display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;
-    color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;
-  }
-  .cert-status .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
-  .cert-card h4{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em;}
+  .cert-status{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;}
+  .cert-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  .cert-card h4{font-size:18px;font-weight:600;margin-bottom:8px;}
   .cert-card p{font-size:13.5px;color:var(--text-dim);line-height:1.6;}
   .progress-bar{height:4px;background:var(--bg-2);border-radius:4px;margin-top:18px;overflow:hidden;}
   .progress-fill{height:100%;background:var(--accent);border-radius:4px;width:0;transition:width 1.4s cubic-bezier(.22,1,.36,1);}
 
-  /* ===== PROJECTS ===== */
   .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-  .project-card{
-    background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:34px;
-    cursor:pointer;transition:all .35s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;
-  }
+  .project-card{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:34px;cursor:pointer;transition:all .35s cubic-bezier(.22,1,.36,1);position:relative;}
   .project-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow);}
+  .project-card:hover .card-arrow{transform:translateX(4px);}
   .project-tag{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:16px;display:inline-block;}
   .project-card h3{font-size:21px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;}
   .project-card p.desc{font-size:14.5px;color:var(--text-dim);line-height:1.65;margin-bottom:20px;}
   .stack-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
   .pill{font-family:var(--mono);font-size:11px;padding:5px 11px;background:var(--bg-2);border:1px solid var(--line);border-radius:6px;color:var(--text-dim);}
-  .arrow-link{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--accent);}
-  .detail{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.22,1,.36,1);}
-  .detail.open{max-height:2000px;}
-  .detail-inner{padding-top:24px;border-top:1px solid var(--line);margin-top:24px;}
-  .detail-block{margin-bottom:18px;}
-  .detail-block h4{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
-  .detail-block p,.detail-block li{font-size:13.5px;color:var(--text-dim);line-height:1.7;}
-  .detail-block ul{padding-left:18px;}
-  .detail-block li{margin-bottom:4px;}
+  .card-footer{display:flex;align-items:center;justify-content:space-between;}
+  .project-status{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--text-faint);}
+  .status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  .status-dot.amber{background:#e8a23e;}
+  .card-arrow{font-size:18px;color:var(--accent);transition:transform .25s ease;}
 
-  /* ===== EXPERIENCE TIMELINE ===== */
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}
+  .modal-overlay.open{pointer-events:all;opacity:1;}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);}
+  .modal{position:relative;z-index:1;background:var(--bg);border-radius:28px 28px 0 0;width:100%;max-width:860px;max-height:90vh;overflow-y:auto;padding:48px;transform:translateY(100%);transition:transform .45s cubic-bezier(.22,1,.36,1);}
+  .modal-overlay.open .modal{transform:translateY(0);}
+  .modal-handle{width:40px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 32px;}
+  .modal-close{position:absolute;top:24px;right:24px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg-2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text-dim);transition:all .2s;}.modal-close:hover{border-color:var(--accent);color:var(--accent);}
+  .modal-tag{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;display:block;}
+  .modal h2{font-size:clamp(24px,3.5vw,36px);font-weight:600;letter-spacing:-0.02em;margin-bottom:16px;}
+  .modal-desc{font-size:16px;color:var(--text-dim);line-height:1.7;margin-bottom:32px;}
+  .modal-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
+  .modal-section{margin-bottom:32px;}
+  .modal-section h3{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .modal-section p{font-size:15px;color:var(--text-dim);line-height:1.75;}
+  .modal-section ul{list-style:none;padding:0;}
+  .modal-section li{font-size:14.5px;color:var(--text-dim);line-height:1.7;padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;}
+  .modal-section li::before{content:'→';color:var(--accent);flex-shrink:0;}
+  .challenge-item{background:var(--bg-2);border-radius:14px;padding:20px;margin-bottom:12px;}
+  .challenge-label{font-family:var(--mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+  .challenge-error{font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:8px;}
+  .challenge-fix{font-size:13.5px;color:var(--text-dim);line-height:1.6;}
+  .challenge-learned{font-size:12.5px;color:var(--accent);margin-top:8px;font-style:italic;}
+
   .timeline{position:relative;padding-left:36px;}
   .timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line);}
-  .tl-item{position:relative;padding-bottom:48px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:'';position:absolute;left:-36px;top:4px;width:10px;height:10px;border-radius:50%;
-    background:var(--accent);box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--line);
-  }
+  .tl-item{position:relative;padding-bottom:48px;}.tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:'';position:absolute;left:-36px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--line);}
   .tl-date{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:6px;}
-  .tl-item h4{font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:-0.01em;}
+  .tl-item h4{font-size:18px;font-weight:600;margin-bottom:6px;}
   .tl-item .tl-role{font-size:13.5px;color:var(--text-faint);margin-bottom:10px;}
   .tl-item p{font-size:14.5px;color:var(--text-dim);line-height:1.7;}
 
-  /* ===== ACHIEVEMENTS ===== */
   .achieve-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .achieve-card{text-align:center;padding:36px 20px;border:1px solid var(--line);border-radius:20px;}
   .achieve-num{font-family:var(--mono);font-size:clamp(28px,4vw,38px);font-weight:600;color:var(--accent);}
   .achieve-lbl{margin-top:8px;font-size:13px;color:var(--text-dim);}
 
-  /* ===== RESUME ===== */
-  .resume-card{
-    display:flex;align-items:center;justify-content:space-between;
-    background:var(--bg-2);border-radius:24px;padding:48px;
-  }
-  .resume-card h3{font-size:24px;font-weight:600;margin-bottom:10px;letter-spacing:-0.015em;}
+  .resume-card{display:flex;align-items:center;justify-content:space-between;background:var(--bg-2);border-radius:24px;padding:48px;}
+  .resume-card h3{font-size:24px;font-weight:600;margin-bottom:10px;}
   .resume-card p{font-size:15px;color:var(--text-dim);max-width:420px;}
 
-  /* ===== CONTACT ===== */
   .contact{text-align:center;}
   .contact h2{font-size:clamp(34px,5.5vw,56px);font-weight:600;letter-spacing:-0.025em;margin-bottom:20px;}
   .contact p{font-size:17px;color:var(--text-dim);max-width:480px;margin:0 auto 36px;}
@@ -238,19 +128,14 @@
 
   footer{padding:40px 24px;text-align:center;font-size:12.5px;color:var(--text-faint);border-top:1px solid var(--line);}
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width:900px){
-    .about-grid{grid-template-columns:1fr;gap:40px;}
+  @media(max-width:900px){
+    .about-grid,.skills-grid{grid-template-columns:1fr;}
     .skills-grid{grid-template-columns:repeat(2,1fr);}
-    .certs-row{grid-template-columns:1fr;}
-    .projects-grid{grid-template-columns:1fr;}
+    .certs-row,.projects-grid{grid-template-columns:1fr;}
     .achieve-grid{grid-template-columns:repeat(2,1fr);}
     .resume-card{flex-direction:column;gap:24px;text-align:center;}
-    .resume-card p{margin:0 auto;}
-    .nav-links .nav-item{display:none;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;}
+    .nav-links a:not(:last-child){display:none;}
+    .modal{padding:32px 24px;}
   }
 </style>
 </head>
@@ -260,44 +145,40 @@
   <div class="nav-inner">
     <div class="nav-logo">Javen Turner<span>.</span></div>
     <div class="nav-links">
-      <a class="nav-item" href="#about">About</a>
-      <a class="nav-item" href="#skills">Skills</a>
-      <a class="nav-item" href="#certifications">Certifications</a>
-      <a class="nav-item" href="#projects">Projects</a>
-      <a class="nav-item" href="#experience">Experience</a>
-      <a class="nav-item" href="#contact">Contact</a>
-      <div class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</div>
+      <a href="#about">About</a><a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a><a href="#projects">Projects</a>
+      <a href="#experience">Experience</a><a href="#contact">Contact</a>
+      <div class="theme-toggle" id="themeToggle">🌙</div>
     </div>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-bg"><div class="orb orb1"></div><div class="orb orb2"></div></div>
-  <div class="eyebrow">IT support specialist → cybersecurity engineer</div>
+  <div class="eyebrow">IT MSP Technician → Cybersecurity Engineer</div>
   <h1>Securing systems.<br><span class="grad">Solving problems.</span></h1>
-  <p class="sub">I'm Javen Turner — an IT professional building toward a career in cybersecurity engineering, with hands-on depth across Microsoft 365, Azure, networking, and security operations.</p>
+  <p class="sub">I'm Javen Turner — an IT professional with hands-on experience across MSP support, Microsoft 365, networking, and security operations. Currently pursuing a B.S./M.S. in Cybersecurity at Eastern Michigan University while building toward a career in cybersecurity engineering.</p>
   <div class="hero-cta">
     <a href="#projects" class="btn btn-primary">View my work →</a>
-    <a href="#resume" class="btn btn-secondary">Download résumé</a>
+    <a href="#contact" class="btn btn-secondary">Get in touch</a>
   </div>
-  <div class="scroll-cue">SCROLL</div>
 </section>
 
 <section id="about">
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>I'm an <strong>IT Support Specialist</strong> with a focus on Microsoft 365 administration, identity management, and endpoint security — currently studying for <strong>CompTIA Security+</strong> as I work toward a career as a <strong>Cybersecurity Engineer</strong>.</p>
-      <p>What drives me is understanding how things actually work underneath — not memorizing steps, but knowing why a fix works, what a misconfiguration actually breaks, and how an attacker would think about the same system I'm defending.</p>
-      <p>I care about doing things correctly the first time, documenting clearly, and building things — whether it's a PowerShell script, a home lab, or a tenant migration — the way I'd want to find them if someone handed them to me cold.</p>
+      <p>I'm an <strong>IT MSP Technician at Technik IT Services</strong> with experience spanning helpdesk, healthcare IT, and managed services — currently pursuing a <strong>B.S./M.S. in Cybersecurity (Accelerated)</strong> at Eastern Michigan University, expected 2027.</p>
+      <p>I've deployed 389+ enterprise endpoints at Corewell Health, resolved 1,765+ support tickets at Technik, and built a full home network security lab from scratch — covering DNS filtering, intrusion detection, VPN, and system hardening.</p>
+      <p>What drives me is understanding how things actually work underneath — not memorizing steps, but knowing why a fix works, what a misconfiguration breaks, and how an attacker thinks about the same system I'm defending.</p>
     </div>
     <div class="reveal">
       <div class="focus-list">
+        <div class="focus-item"><span>MSP &amp; Enterprise IT</span><span>TIER I · TIER II</span></div>
         <div class="focus-item"><span>Microsoft 365 &amp; Azure</span><span>ENTRA ID · EXO</span></div>
-        <div class="focus-item"><span>Endpoint &amp; Identity</span><span>MDM · MFA · CA</span></div>
         <div class="focus-item"><span>Networking</span><span>DNS · DHCP · VPN</span></div>
-        <div class="focus-item"><span>Security Operations</span><span>SOC · IR</span></div>
+        <div class="focus-item"><span>Security Operations</span><span>SOC · IR · IDS</span></div>
         <div class="focus-item"><span>Systems</span><span>Windows · Linux</span></div>
-        <div class="focus-item"><span>Automation</span><span>PowerShell</span></div>
+        <div class="focus-item"><span>Scripting &amp; Automation</span><span>PowerShell · Python · Bash</span></div>
       </div>
     </div>
   </div>
@@ -307,90 +188,24 @@
   <div class="section-head reveal">
     <div class="section-eyebrow">Technical skills</div>
     <h2>What I work with.</h2>
-    <p>A blend of enterprise Microsoft cloud administration and hands-on infrastructure and security fundamentals.</p>
   </div>
-
   <div class="skills-grid reveal">
-    <div class="skill-cat">
-      <div class="icon">☁</div>
-      <h4>Microsoft 365 &amp; Azure</h4>
-      <ul>
-        <li>Microsoft 365 Administration</li>
-        <li>Azure</li>
-        <li>Entra ID</li>
-        <li>Exchange Online</li>
-        <li>Azure AD Connect</li>
-        <li>Conditional Access</li>
-        <li>Multi-Factor Authentication</li>
-      </ul>
-    </div>
-    <div class="skill-cat">
-      <div class="icon">🖥</div>
-      <h4>Systems &amp; Identity</h4>
-      <ul>
-        <li>Windows 10/11</li>
-        <li>Windows Server</li>
-        <li>Active Directory</li>
-        <li>Endpoint Management</li>
-        <li>Identity Management</li>
-        <li>Linux</li>
-      </ul>
-    </div>
-    <div class="skill-cat">
-      <div class="icon">◈</div>
-      <h4>Networking &amp; Security</h4>
-      <ul>
-        <li>Networking fundamentals</li>
-        <li>DNS &amp; DHCP</li>
-        <li>TCP/IP</li>
-        <li>VPN</li>
-        <li>Email Security</li>
-        <li>Microsoft Defender</li>
-        <li>Security Operations</li>
-        <li>Incident Response</li>
-      </ul>
-    </div>
-    <div class="skill-cat">
-      <div class="icon">▸</div>
-      <h4>Tools &amp; Practice</h4>
-      <ul>
-        <li>PowerShell</li>
-        <li>VMware</li>
-        <li>Hyper-V</li>
-        <li>Virtual Machines</li>
-        <li>Troubleshooting</li>
-        <li>Documentation</li>
-        <li>Customer Support</li>
-      </ul>
-    </div>
+    <div class="skill-cat"><div class="icon">☁</div><h4>Microsoft 365 &amp; Identity</h4><ul><li>Microsoft 365 Admin</li><li>Exchange Online</li><li>Entra ID / Azure AD</li><li>Active Directory</li><li>Sign-in &amp; Audit Logs</li><li>Message Trace</li><li>MFA &amp; Conditional Access</li></ul></div>
+    <div class="skill-cat"><div class="icon">🖥</div><h4>Systems &amp; Infrastructure</h4><ul><li>Windows 10/11 · Server 2019</li><li>Linux · Ubuntu · Kali · Parrot</li><li>VMware · VirtualBox</li><li>Endpoint deployment &amp; imaging</li><li>Group Policy Management</li><li>Routers · Switches · WAPs</li></ul></div>
+    <div class="skill-cat"><div class="icon">◈</div><h4>Networking &amp; Security</h4><ul><li>TCP/IP · DNS · DHCP · NAT</li><li>VPN · VLANs · Firewalls</li><li>IDS/IPS (Suricata · Snort)</li><li>UFW · Fail2ban · pfSense</li><li>Nmap · Wireshark · Nessus</li><li>Metasploit · Burp Suite</li></ul></div>
+    <div class="skill-cat"><div class="icon">▸</div><h4>Scripting &amp; Concepts</h4><ul><li>PowerShell · Python · Bash</li><li>SQL · JavaScript · HTML/CSS</li><li>NIST Cybersecurity Framework</li><li>Incident Response Lifecycle</li><li>Zero Trust · RBAC</li><li>Vulnerability Management</li><li>Log Analysis · Splunk</li></ul></div>
   </div>
 </section>
 
 <section id="certifications">
   <div class="section-head reveal">
-    <div class="section-eyebrow">Certifications &amp; current learning</div>
+    <div class="section-eyebrow">Certifications &amp; learning</div>
     <h2>What I'm earning right now.</h2>
   </div>
-
   <div class="certs-row reveal">
-    <div class="cert-card">
-      <div class="cert-status"><span class="dot"></span>In progress</div>
-      <h4>CompTIA Security+</h4>
-      <p>Core security domains — threats, risk management, cryptography, identity, and incident response. Targeting exam date soon.</p>
-      <div class="progress-bar"><div class="progress-fill" data-fill="70"></div></div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-status"><span class="dot"></span>Currently studying</div>
-      <h4>Microsoft 365 / Azure fundamentals</h4>
-      <p>Deepening hands-on expertise in Entra ID, Exchange Online, and Conditional Access policy design beyond day-to-day admin work.</p>
-      <div class="progress-bar"><div class="progress-fill" data-fill="55"></div></div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-status"><span class="dot"></span>Planned next</div>
-      <h4>Security operations &amp; IR practice</h4>
-      <p>Hands-on labs in log analysis, alert triage, and incident response workflows to round out a SOC-ready skill set.</p>
-      <div class="progress-bar"><div class="progress-fill" data-fill="30"></div></div>
-    </div>
+    <div class="cert-card"><div class="cert-status"><span class="cert-dot"></span>In progress</div><h4>CompTIA Security+</h4><p>Core security domains — threats, risk management, cryptography, identity, and incident response. Targeting exam date soon.</p><div class="progress-bar"><div class="progress-fill" data-fill="70"></div></div></div>
+    <div class="cert-card"><div class="cert-status"><span class="cert-dot"></span>Exam ready</div><h4>Juniper JNCIA-Junos (JN0-106)</h4><p>Junos OS fundamentals, routing policy, firewall filters, network monitoring, and device administration. About to sit the exam.</p><div class="progress-bar"><div class="progress-fill" data-fill="95"></div></div></div>
+    <div class="cert-card"><div class="cert-status"><span class="cert-dot"></span>Planned next</div><h4>Security operations &amp; IR practice</h4><p>Hands-on labs in log analysis, alert triage, and incident response workflows to round out a SOC-ready skill set.</p><div class="progress-bar"><div class="progress-fill" data-fill="30"></div></div></div>
   </div>
 </section>
 
@@ -398,187 +213,194 @@
   <div class="section-head reveal">
     <div class="section-eyebrow">Projects</div>
     <h2>Things I've actually built.</h2>
-    <p>Spanning Microsoft cloud administration, home lab network security, and hands-on scripting. Click any project for the details.</p>
+    <p>Click the project to see the full architecture, design decisions, and real troubleshooting stories. More projects coming as they're completed.</p>
   </div>
-
   <div class="projects-grid reveal">
 
-    <div class="project-card" onclick="toggle('d1')">
-      <span class="project-tag">Microsoft 365 / Azure</span>
-      <h3>Tenant migration &amp; identity cleanup</h3>
-      <p class="desc">Replace with your real migration project — e.g. a Microsoft 365 tenant-to-tenant migration, mailbox moves, or an Entra ID identity cleanup and Conditional Access rollout.</p>
-      <div class="stack-pills"><span class="pill">Entra ID</span><span class="pill">Exchange Online</span><span class="pill">Azure AD Connect</span></div>
-      <div class="arrow-link">View details ↓</div>
-      <div class="detail" id="d1">
-        <div class="detail-inner">
-          <div class="detail-block"><h4>Problem</h4><p>Replace with the real business problem — e.g. duplicate identities after a merger, legacy on-prem AD sync issues, or unmanaged MFA enrollment.</p></div>
-          <div class="detail-block"><h4>What I did</h4>
-            <ul>
-              <li>Replace with a specific step — e.g. audited and cleaned up stale Entra ID objects</li>
-              <li>Replace with a specific step — e.g. rolled out Conditional Access policies by group</li>
-              <li>Replace with a specific step — e.g. migrated mailboxes with minimal downtime</li>
-            </ul>
-          </div>
-          <div class="detail-block"><h4>Outcome</h4><p>Replace with a measurable result — e.g. reduced helpdesk tickets by X%, or fully enforced MFA across the tenant.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="toggle('d2')">
-      <span class="project-tag">Automation</span>
-      <h3>PowerShell automation scripts</h3>
-      <p class="desc">Replace with your real scripting work — e.g. bulk user provisioning, automated license assignment, or scheduled reporting scripts.</p>
-      <div class="stack-pills"><span class="pill">PowerShell</span><span class="pill">Microsoft Graph</span></div>
-      <div class="arrow-link">View details ↓</div>
-      <div class="detail" id="d2">
-        <div class="detail-inner">
-          <div class="detail-block"><h4>What I built</h4>
-            <ul>
-              <li>Replace with a specific script — e.g. a bulk onboarding script using Microsoft Graph PowerShell SDK</li>
-              <li>Replace with a specific script — e.g. an automated inactive account report</li>
-            </ul>
-          </div>
-          <div class="detail-block"><h4>Why it matters</h4><p>Replace with the time saved or error reduced — e.g. cut manual onboarding time from 30 minutes to under 2 per user.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="toggle('d3')">
+    <div class="project-card" onclick="openModal('m1')">
       <span class="project-tag">Network security · home lab</span>
-      <h3>DNS-layer network defense</h3>
-      <p class="desc">Deployed a DNS-based filtering and threat-blocking layer across a home network — Pi-hole, Unbound, and UFW working together to filter malicious domains and encrypt upstream resolution.</p>
-      <div class="stack-pills"><span class="pill">Pi-hole</span><span class="pill">Unbound</span><span class="pill">UFW</span><span class="pill">Fail2ban</span></div>
-      <div class="arrow-link">View details ↓</div>
-      <div class="detail" id="d3">
-        <div class="detail-inner">
-          <div class="detail-block"><h4>Problem</h4><p>No filtering or privacy at the DNS level — every device on the network sent raw queries straight to the ISP, with full ad and tracker exposure.</p></div>
-          <div class="detail-block"><h4>What I built</h4>
-            <ul>
-              <li>Pi-hole as a network-wide DNS sinkhole with custom blocklists</li>
-              <li>Unbound for fully recursive resolution — no upstream provider sees a query</li>
-              <li>UFW locked to only the ports needed, Fail2ban auto-banning failed SSH attempts</li>
-              <li>SSH key-only authentication, password login disabled</li>
-            </ul>
-          </div>
-          <div class="detail-block"><h4>What broke / what I learned</h4><p>First Unbound config returned SERVFAIL on every query — root hints file had gone stale. Re-pulling it from InterNIC fixed resolution immediately. Taught me to actually read DNS error codes instead of guessing at config syntax.</p></div>
-        </div>
-      </div>
+      <h3>Home Network Security Stack</h3>
+      <p class="desc">Multi-layer network security system on a Raspberry Pi — DNS filtering, recursive resolution, intrusion detection, dual VPN, and system hardening. Built in deliberate phases with security controls enforced before any service was exposed.</p>
+      <div class="stack-pills"><span class="pill">Pi-hole</span><span class="pill">Unbound</span><span class="pill">Suricata</span><span class="pill">WireGuard</span><span class="pill">OpenVPN</span><span class="pill">UFW</span><span class="pill">Fail2ban</span></div>
+      <div class="card-footer"><div class="project-status"><span class="status-dot"></span>Live — running 24/7</div><span class="card-arrow">→</span></div>
     </div>
 
-    <div class="project-card" onclick="toggle('d4')">
-      <span class="project-tag">Detection · home lab</span>
-      <h3>Suricata intrusion detection</h3>
-      <p class="desc">Lightweight network IDS watching live traffic for port scans, brute-force attempts, and known attack signatures.</p>
-      <div class="stack-pills"><span class="pill">Suricata</span><span class="pill">Custom rules</span></div>
-      <div class="arrow-link">View details ↓</div>
-      <div class="detail" id="d4">
-        <div class="detail-inner">
-          <div class="detail-block"><h4>What I built</h4>
-            <ul>
-              <li>Suricata deployed inline on the network gateway interface</li>
-              <li>Ruleset tuned to cut false positives from normal home traffic</li>
-              <li>Alert log piped to a central view for daily review</li>
-            </ul>
-          </div>
-          <div class="detail-block"><h4>Currently working on</h4><p>Writing custom rules to flag specific reconnaissance patterns to validate detection coverage end to end.</p></div>
-        </div>
-      </div>
-    </div>
 
-    <div class="project-card" onclick="toggle('d5')">
-      <span class="project-tag">Security operations</span>
-      <h3>Log analysis &amp; alert triage workflow</h3>
-      <p class="desc">A structured workflow for collecting, correlating, and triaging security alerts from multiple sources into a single review process.</p>
-      <div class="stack-pills"><span class="pill">SIEM concepts</span><span class="pill">Log correlation</span></div>
-      <div class="arrow-link">View details ↓</div>
-      <div class="detail" id="d5">
-        <div class="detail-inner">
-          <div class="detail-block"><h4>What I'm building</h4>
-            <ul>
-              <li>Centralizing logs from firewall, IDS, and auth sources into one place</li>
-              <li>Defining triage priority levels and an escalation checklist</li>
-            </ul>
-          </div>
-          <div class="detail-block"><h4>Why it matters</h4><p>Replace this with a real example of something you caught or triaged using this workflow.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="toggle('d6')">
-      <span class="project-tag">Endpoint &amp; identity</span>
-      <h3>Conditional Access &amp; MFA rollout</h3>
-      <p class="desc">Replace with a real Conditional Access / MFA enforcement project — policy design, exception handling, and rollout communication.</p>
-      <div class="stack-pills"><span class="pill">Entra ID</span><span class="pill">Conditional Access</span><span class="pill">MFA</span></div>
-      <div class="arrow-link">View details ↓</div>
-      <div class="detail" id="d6">
-        <div class="detail-inner">
-          <div class="detail-block"><h4>What I did</h4>
-            <ul>
-              <li>Replace with specifics — e.g. designed risk-based Conditional Access policies</li>
-              <li>Replace with specifics — e.g. piloted MFA enforcement with a test group before full rollout</li>
-            </ul>
-          </div>
-          <div class="detail-block"><h4>Outcome</h4><p>Replace with a measurable result — e.g. achieved 100% MFA coverage with minimal support tickets.</p></div>
-        </div>
-      </div>
-    </div>
 
   </div>
 </section>
+
+<!-- MODAL 1 — Home Lab -->
+<div class="modal-overlay" id="m1" onclick="handleOverlayClick(event,'m1')">
+  <div class="modal-backdrop"></div>
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal('m1')">✕</button>
+    <span class="modal-tag">Network security · home lab · Raspberry Pi</span>
+    <h2>Home Network Security Stack</h2>
+    <p class="modal-desc">Designed and deployed a multi-layer network security system on a Raspberry Pi from scratch — DNS filtering, recursive resolution, intrusion detection, VPN access, and system hardening. Built in deliberate phases with security controls enforced before any service was exposed. Running 24/7 in production.</p>
+    <div class="modal-pills"><span class="pill">Pi-hole</span><span class="pill">Unbound</span><span class="pill">Suricata IDS</span><span class="pill">WireGuard</span><span class="pill">OpenVPN</span><span class="pill">UFW</span><span class="pill">Fail2ban</span><span class="pill">DuckDNS</span><span class="pill">Linux</span><span class="pill">DNSSEC</span></div>
+
+    <div class="modal-section">
+      <h3>Architecture</h3>
+      <p>Raspberry Pi 4 (2GB) running Raspberry Pi OS Lite 64-bit at static IP 10.0.0.10. All network devices route DNS through Pi-hole via router-level configuration — no per-device setup needed. Pi-hole forwards allowed queries to Unbound on localhost port 5335 for fully recursive resolution with no upstream DNS provider. Every query resolved directly from root servers — Google, Cloudflare, and the ISP never see what's being looked up.</p>
+    </div>
+
+    <div class="modal-section">
+      <h3>Components &amp; what each one does</h3>
+      <ul>
+        <li><strong>OS Hardening</strong> — SSH disabled entirely. Raspberry Pi Connect handles remote access via outbound relay — no inbound port needed, eliminating port 22 attack surface completely.</li>
+        <li><strong>UFW Firewall</strong> — Default-deny incoming. Subnet-restricted rules — ports 53, 67, 80 only reachable from 10.0.0.0/24. Principle of least privilege at the network level.</li>
+        <li><strong>Fail2ban</strong> — Custom jail for Pi-hole admin interface. UFW as banaction for consistency. Custom regex filter. 1-day ban time, 45-minute detection window to catch slow brute force attempts.</li>
+        <li><strong>Unbound</strong> — Fully recursive DNS resolver on port 5335. Queries go directly to root DNS servers. DNSSEC validation enabled and confirmed working. DNS rebinding attack protection via private-address directives.</li>
+        <li><strong>Pi-hole</strong> — Network-wide DNS sinkhole. All devices protected automatically via router DNS setting. Custom blocklists on top of defaults.</li>
+        <li><strong>WireGuard VPN</strong> — Self-hosted on port 51820. DuckDNS (toppick.duckdns.org) provides stable hostname. VPN clients use Pi-hole for DNS — ad blocking works away from home.</li>
+        <li><strong>OpenVPN</strong> — Fallback VPN on TCP port 443. Port 443 = HTTPS — can't be blocked without breaking all web traffic. Works through every firewall including corporate networks.</li>
+        <li><strong>Suricata IDS</strong> — Passive intrusion detection watching eth0. 52,000+ rules loaded. Detected real traffic patterns within hours of deployment including Discord usage and STUN traffic.</li>
+      </ul>
+    </div>
+
+    <div class="modal-section">
+      <h3>Key design decisions</h3>
+      <ul>
+        <li>SSH disabled — Raspberry Pi Connect uses outbound relay, no inbound port needed</li>
+        <li>UFW subnet-restricted — even open ports only reachable from trusted local devices</li>
+        <li>Firewall configured before any service installed — never expose before controls in place</li>
+        <li>Unbound over upstream provider — no third party ever sees DNS queries</li>
+        <li>OpenVPN on TCP 443 not UDP 1194 — guaranteed to work through all firewalls</li>
+        <li>ECS disabled — EDNS Client Subnet leaks home IP to authoritative servers</li>
+        <li>Reverted DoT rather than running broken forwarding — stable recursive DNS more valuable than unreliable encryption layer</li>
+      </ul>
+    </div>
+
+    <div class="modal-section">
+      <h3>Real challenges solved</h3>
+
+      <div class="challenge-item">
+        <div class="challenge-label">Challenge 1</div>
+        <div class="challenge-error">Fail2ban crashed — regex missing HOST capture group</div>
+        <div class="challenge-fix">Diagnosed using fail2ban-client -vvv. Identified "No failure-id group" error. Rewrote failregex to include &lt;HOST&gt; tag.</div>
+        <div class="challenge-learned">Fail2ban must know which IP to ban — &lt;HOST&gt; is mandatory in every filter.</div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-label">Challenge 2</div>
+        <div class="challenge-error">Two Unbound instances running — wrong port conflict</div>
+        <div class="challenge-fix">ss -tulpn showed two PIDs on ports 53 and 5335. Killed old instance, new config took over correctly.</div>
+        <div class="challenge-learned">Always verify what's actually listening after config changes — don't assume restart worked.</div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-label">Challenge 3</div>
+        <div class="challenge-error">DNS-over-TLS returning SERVFAIL despite correct config</div>
+        <div class="challenge-fix">Confirmed ISP blocks port 853. Port 443 connects to Quad9 but Unbound forward zone returned persistent SERVFAIL. Made deliberate decision to maintain stable recursive resolution. Identified Stubby as the correct tool for DoT — planned as next enhancement.</div>
+        <div class="challenge-learned">Recognize when a tool isn't the right fit and use the right one rather than forcing a broken solution.</div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-label">Challenge 4</div>
+        <div class="challenge-error">WireGuard blocking all 10.0.0.x local traffic on desktop</div>
+        <div class="challenge-fix">route print on Windows showed WireGuard routing all 10.0.0.x through VPN tunnel instead of local network. Deactivated WireGuard — routing restored immediately.</div>
+        <div class="challenge-learned">Always check active VPN connections when troubleshooting connectivity — VPN routes override local routing tables.</div>
+      </div>
+
+      <div class="challenge-item">
+        <div class="challenge-label">Challenge 5</div>
+        <div class="challenge-error">wlan0 causing routing conflicts — all external pings failing</div>
+        <div class="challenge-fix">ip route show revealed wlan0 got 10.0.0.253 from ISP DHCP, creating two default routes on same subnet. Disabled wlan0 permanently via nmcli autoconnect no.</div>
+        <div class="challenge-learned">Multiple interfaces on same subnet create routing ambiguity. ip route show is the diagnostic tool.</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <h3>What I learned</h3>
+      <p>The most valuable lesson was learning to think in layers. UFW controls what gets in. Fail2ban handles repeat offenders. Pi-hole filters at the DNS layer. Unbound eliminates third-party visibility. Suricata watches everything that made it through all of that. Real security isn't one strong wall — it's many layers each catching what the others miss. That principle applies whether you're securing a Raspberry Pi or a Fortune 500 enterprise network.</p>
+    </div>
+
+    <div class="modal-section">
+      <h3>Planned next</h3>
+      <ul>
+        <li>DNS-over-TLS via Stubby — encrypt outbound queries to Quad9 on port 443</li>
+        <li>DNS bypass prevention — Hagezi blocklist + iptables rules blocking port 53/853 outbound</li>
+        <li>pfSense virtual router — proper VLAN segmentation for IoT and network isolation</li>
+        <li>Alert notification system — ntfy.sh push notifications for Suricata and Fail2ban events</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 
 <section id="experience">
   <div class="section-head reveal">
     <div class="section-eyebrow">Experience &amp; timeline</div>
     <h2>How I got here.</h2>
   </div>
-
   <div class="timeline reveal">
     <div class="tl-item">
-      <div class="tl-date">Current</div>
-      <h4>IT Support Specialist</h4>
-      <div class="tl-role">Replace with company name</div>
-      <p>Replace with your real role summary — e.g. providing tiered IT support, managing Microsoft 365 tenants, and handling endpoint and identity administration for end users.</p>
+      <div class="tl-date">August 2025 — Present</div>
+      <h4>IT MSP Technician</h4>
+      <div class="tl-role">Technik IT Services · Fenton, MI</div>
+      <p>Resolved 1,765+ support tickets across multiple client environments. Tier I and II remote and onsite support covering hardware, software, networking, and security incidents. Configured and maintained routers, switches, firewalls, WAPs, and VPN connections. Investigated Microsoft 365, Exchange Online, and security-related incidents including phishing, suspicious logins, and malware. Conducted IT infrastructure and security audits and documented remediation recommendations.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">January 2025 — August 2025</div>
+      <h4>IT Analyst</h4>
+      <div class="tl-role">Corewell Health (via MCPC Inc.) · Southfield, MI</div>
+      <p>Deployed 389+ ThinkCentre M70q Gen 5 clinical and business image devices across hospital sites under tight project deadlines. Conducted system analysis and troubleshooting for end-user devices in both office and field environments. Resolved hardware, software, connectivity, and peripheral issues with minimal downtime.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">July 2024 — February 2025</div>
+      <h4>IT Helpdesk Technician</h4>
+      <div class="tl-role">Eastern Michigan University · Ypsilanti, MI</div>
+      <p>Handled 15–20 support tickets daily covering website issues, broken links, content updates, and layout troubleshooting. Collaborated with the web services team to test functionality and implement design improvements aligned with university branding guidelines.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">August 2022 — Present</div>
+      <h4>Member — Information Assurance Student Association</h4>
+      <div class="tl-role">Eastern Michigan University · Ypsilanti, MI</div>
+      <p>Participated in National Cyber League (NCL) competitions across domains including network forensics, cryptography, log analysis, and web application vulnerabilities. Built proficiency in tools used in SOC and cybersecurity analyst roles — packet sniffers, OSINT resources, and password recovery utilities.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Expected 2027</div>
+      <h4>B.S./M.S. Cybersecurity (Accelerated)</h4>
+      <div class="tl-role">Eastern Michigan University · Ypsilanti, MI</div>
+      <p>Accelerated dual-degree program combining undergraduate and graduate cybersecurity coursework. Expected graduation 2027.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Exam ready</div>
+      <h4>Juniper JNCIA-Junos (JN0-106)</h4>
+      <div class="tl-role">Self-directed study + real-world lab</div>
+      <p>Studied Junos OS fundamentals through hands-on lab work including a live emergency firewall migration on a Juniper SRX in production. About to sit the exam.</p>
     </div>
     <div class="tl-item">
       <div class="tl-date">In progress</div>
-      <h4>CompTIA Security+ certification</h4>
+      <h4>CompTIA Security+</h4>
       <div class="tl-role">Self-directed study</div>
-      <p>Working through core security domains in preparation for certification, paired with hands-on labs to reinforce concepts.</p>
+      <p>Working through core security domains paired with hands-on labs to reinforce concepts in real environments.</p>
     </div>
     <div class="tl-item">
-      <div class="tl-date">Ongoing</div>
-      <h4>Home lab — network security &amp; detection</h4>
-      <div class="tl-role">Self-directed project work</div>
-      <p>Built and maintain a home lab covering DNS-layer filtering, VPN, and intrusion detection — used as a sandbox for testing concepts before applying them professionally.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">Long-term goal</div>
+      <div class="tl-date">Goal</div>
       <h4>Cybersecurity Engineer / Security Analyst</h4>
       <div class="tl-role">Target role</div>
-      <p>Continuing to expand cloud and Microsoft security expertise while building toward a security engineering or analyst role.</p>
+      <p>Expanding security engineering expertise while building toward a cybersecurity engineer or analyst role at an enterprise organization.</p>
     </div>
   </div>
 </section>
 
 <section id="achievements">
-  <div class="section-head reveal">
-    <div class="section-eyebrow">Achievements</div>
-    <h2>By the numbers.</h2>
-  </div>
+  <div class="section-head reveal"><div class="section-eyebrow">By the numbers</div><h2>Real results.</h2></div>
   <div class="achieve-grid reveal">
-    <div class="achieve-card"><div class="achieve-num" id="numProjects">0</div><div class="achieve-lbl">Projects documented</div></div>
-    <div class="achieve-card"><div class="achieve-num" id="numCerts">0</div><div class="achieve-lbl">Certifications in progress</div></div>
-    <div class="achieve-card"><div class="achieve-num" id="numUptime">0</div><div class="achieve-lbl">Days home lab uptime</div></div>
-    <div class="achieve-card"><div class="achieve-num" id="numTickets">0</div><div class="achieve-lbl">Replace: tickets resolved</div></div>
+    <div class="achieve-card"><div class="achieve-num" id="n1">0</div><div class="achieve-lbl">Support tickets resolved</div></div>
+    <div class="achieve-card"><div class="achieve-num" id="n2">0</div><div class="achieve-lbl">Endpoints deployed</div></div>
+    <div class="achieve-card"><div class="achieve-num" id="n3">0</div><div class="achieve-lbl">Suricata rules active</div></div>
+    <div class="achieve-card"><div class="achieve-num" id="n4">0</div><div class="achieve-lbl">Years of IT experience</div></div>
   </div>
 </section>
 
 <section id="resume">
   <div class="reveal resume-card">
-    <div>
-      <h3>Want the full résumé?</h3>
-      <p>Download a complete PDF covering experience, certifications, and technical skills in detail.</p>
-    </div>
+    <div><h3>Want the full résumé?</h3><p>Download a complete PDF covering experience, certifications, and technical skills in detail.</p></div>
     <a href="#" class="btn btn-primary">Download résumé →</a>
   </div>
 </section>
@@ -586,7 +408,7 @@
 <section id="contact" class="contact">
   <div class="reveal">
     <h2>Let's talk.</h2>
-    <p>Open to IT, security operations, and cybersecurity engineering roles. Always happy to walk through how any of this was built.</p>
+    <p>Open to IT, security operations, and cybersecurity engineering roles. Happy to walk through how any of this was built.</p>
     <div class="contact-links">
       <a href="mailto:youremail@example.com" class="btn btn-primary">Email me</a>
       <a href="#" class="btn btn-secondary">LinkedIn</a>
@@ -598,75 +420,39 @@
 <footer>© Javen Turner. Built and documented as a living portfolio — updated as projects ship.</footer>
 
 <script>
-  // Theme toggle
-  const toggle = document.getElementById('themeToggle');
-  const root = document.documentElement;
-  function setTheme(t){
-    root.setAttribute('data-theme', t);
-    toggle.textContent = t === 'dark' ? '☀' : '🌙';
-    localStorage.setItem('theme', t);
+  // Theme
+  const themeToggle=document.getElementById('themeToggle');
+  function setTheme(t){document.documentElement.setAttribute('data-theme',t);themeToggle.textContent=t==='dark'?'☀':'🌙';localStorage.setItem('theme',t);}
+  setTheme(localStorage.getItem('theme')||'light');
+  themeToggle.addEventListener('click',()=>setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));
+
+  // Reveal
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Progress bars
+  const cObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){document.querySelectorAll('.progress-fill').forEach(b=>b.style.width=b.dataset.fill+'%');cObs.disconnect();}});},{threshold:.3});
+  const cs=document.getElementById('certifications');if(cs)cObs.observe(cs);
+
+  // Counters
+  function count(id,end,suffix,dur){
+    const el=document.getElementById(id);if(!el)return;
+    const t0=performance.now();
+    (function tick(now){
+      const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(end*e)+suffix;
+      if(p<1)requestAnimationFrame(tick);
+    })(t0);
   }
-  const saved = localStorage.getItem('theme') || 'light';
-  setTheme(saved);
-  toggle.addEventListener('click', () => {
-    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  });
+  let triggered=false;
+  const aObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!triggered){triggered=true;count('n1',1765,'+',1800);count('n2',389,'+',1400);count('n3',52000,'+',1800);count('n4',2,'',900);aObs.disconnect();}});},{threshold:.3});
+  const as=document.getElementById('achievements');if(as)aObs.observe(as);
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal, .reveal-blur');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-  }, {threshold:0.15});
-  revealEls.forEach(el => obs.observe(el));
-
-  // Project detail toggle
-  function toggle_detail(id){
-    document.getElementById(id).classList.toggle('open');
-  }
-  window.toggle = function(id){ document.getElementById(id).classList.toggle('open'); };
-
-  // Progress bars animate on view
-  const certObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        document.querySelectorAll('.progress-fill').forEach(bar => {
-          bar.style.width = bar.getAttribute('data-fill') + '%';
-        });
-        certObs.disconnect();
-      }
-    });
-  }, {threshold:0.3});
-  const certsSection = document.getElementById('certifications');
-  if(certsSection) certObs.observe(certsSection);
-
-  // Achievement counters
-  function animateCount(id, end, suffix, duration){
-    const el = document.getElementById(id);
-    const startTime = performance.now();
-    function tick(now){
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(end * eased) + suffix;
-      if(progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-  let achieveTriggered = false;
-  const achieveObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting && !achieveTriggered){
-        achieveTriggered = true;
-        animateCount('numProjects', 6, '', 1200);
-        animateCount('numCerts', 1, '', 900);
-        animateCount('numUptime', 142, '', 1600);
-        animateCount('numTickets', 0, '', 800);
-        achieveObs.disconnect();
-      }
-    });
-  }, {threshold:0.3});
-  const achieveSection = document.getElementById('achievements');
-  if(achieveSection) achieveObs.observe(achieveSection);
+  // Modal
+  function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+  function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+  function handleOverlayClick(e,id){if(e.target===document.getElementById(id)||e.target.classList.contains('modal-backdrop'))closeModal(id);}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(o=>o.classList.remove('open'));document.body.style.overflow='';}});
 </script>
-
 </body>
 </html>
