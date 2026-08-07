@@ -13,7 +13,14 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
   .reveal.in{opacity:1;transform:none;}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:200;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line);}
+  .scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:1;transition:opacity .5s ease;z-index:2;cursor:pointer;}
+  .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:300;}
+  .scroll-indicator.hidden{opacity:0;pointer-events:none;}
+  .scroll-indicator span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);}
+  .scroll-chevron{width:20px;height:20px;border-right:1.5px solid var(--text-faint);border-bottom:1.5px solid var(--text-faint);transform:rotate(45deg);animation:bounce 1.8s ease-in-out infinite;}
+  @keyframes bounce{0%,100%{transform:rotate(45deg) translate(0,0);opacity:1;}50%{transform:rotate(45deg) translate(4px,4px);opacity:.4;}}
+  .scroll-progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 70%,#a78bfa));transition:width .1s linear;}
+  nav{position:fixed;top:3px;left:0;right:0;z-index:200;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line);}
   .nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
   .nav-logo{font-size:15px;font-weight:600;}.nav-logo span{color:var(--accent);}
   .nav-links{display:flex;gap:28px;align-items:center;}
@@ -97,7 +104,42 @@
   .modal-section ul{list-style:none;padding:0;}
   .modal-section li{font-size:14.5px;color:var(--text-dim);line-height:1.7;padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;}
   .modal-section li::before{content:'→';color:var(--accent);flex-shrink:0;}
-  .challenge-item{background:var(--bg-2);border-radius:14px;padding:20px;margin-bottom:12px;}
+  /* TOPOLOGY DIAGRAM */
+  .topology{background:var(--bg-2);border-radius:20px;padding:32px 24px;margin:24px 0;position:relative;overflow:hidden;}
+  .topology-hint{font-family:var(--mono);font-size:11px;color:var(--text-faint);text-align:center;margin-bottom:24px;letter-spacing:.05em;}
+  .topo-grid{display:flex;flex-direction:column;align-items:center;gap:0;}
+  .topo-node{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
+  .topo-box{background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:14px 20px;cursor:pointer;transition:all .25s cubic-bezier(.22,1,.36,1);text-align:center;min-width:200px;position:relative;}
+  .topo-box:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px -8px color-mix(in srgb,var(--accent) 30%,transparent);}
+  .topo-box.active{border-color:var(--accent);background:var(--accent);color:#fff;}
+  .topo-box.active .topo-label{color:#fff;}
+  .topo-box.active .topo-sub{color:rgba(255,255,255,0.75);}
+  .topo-icon{font-size:18px;margin-bottom:4px;}
+  .topo-label{font-size:13px;font-weight:600;color:var(--text);}
+  .topo-sub{font-family:var(--mono);font-size:10px;color:var(--text-faint);margin-top:2px;}
+  .topo-connector{width:2px;height:28px;background:var(--line);position:relative;}
+  .topo-connector::after{content:'↓';position:absolute;left:50%;transform:translateX(-50%);bottom:-2px;font-size:10px;color:var(--text-faint);}
+  .topo-connector.active-line{background:var(--accent);}
+  .topo-connector.active-line::after{color:var(--accent);}
+  .topo-pi{background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:20px 24px;min-width:280px;text-align:center;}
+  .topo-pi-label{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .topo-pi-sub{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:16px;}
+  .topo-pi-services{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;}
+  .topo-service{font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--text-dim);cursor:pointer;transition:all .2s;}
+  .topo-service:hover,.topo-service.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .topo-info{background:var(--bg);border:1px solid var(--accent);border-radius:14px;padding:18px 20px;margin-top:20px;min-height:70px;transition:all .3s ease;}
+  .topo-info-title{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:4px;}
+  .topo-info-text{font-size:13px;color:var(--text-dim);line-height:1.6;}
+  .topo-row{display:flex;align-items:center;gap:16px;justify-content:center;margin:8px 0;}
+  .topo-row .topo-connector{width:28px;height:2px;}
+  .topo-row .topo-connector::after{content:'→';bottom:auto;top:50%;transform:translate(-50%,-50%);}
+  .screenshot-slot{margin:24px 0;}
+  .screenshot-slot:hover{border-color:var(--accent);}
+  .screenshot-slot img{width:100%;border-radius:14px;display:block;box-shadow:0 8px 32px -8px rgba(0,0,0,0.2),0 0 0 1px rgba(0,0,0,0.06);}
+  [data-theme="dark"] .screenshot-slot img{box-shadow:0 8px 32px -8px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.07);}
+  .screenshot-slot .placeholder{background:var(--bg-2);border:1.5px dashed var(--line);border-radius:14px;padding:32px 24px;text-align:center;color:var(--text-faint);font-family:var(--mono);font-size:12px;}
+  .screenshot-slot .placeholder span{display:block;font-size:20px;margin-bottom:8px;}
+  .screenshot-caption{font-family:var(--mono);font-size:11px;color:var(--text-faint);text-align:center;margin-top:10px;margin-bottom:4px;letter-spacing:.04em;}
   .challenge-label{font-family:var(--mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
   .challenge-error{font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:8px;}
   .challenge-fix{font-size:13.5px;color:var(--text-dim);line-height:1.6;}
@@ -141,6 +183,7 @@
 </head>
 <body>
 
+<div class="scroll-progress"><div class="scroll-progress-bar" id="scrollBar"></div></div>
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">Javen Turner<span>.</span></div>
@@ -161,6 +204,10 @@
   <div class="hero-cta">
     <a href="#projects" class="btn btn-primary">View my work →</a>
     <a href="#contact" class="btn btn-secondary">Get in touch</a>
+  </div>
+  <div class="scroll-indicator" id="scrollIndicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+    <span>Scroll</span>
+    <div class="scroll-chevron"></div>
   </div>
 </section>
 
@@ -244,6 +291,83 @@
     <div class="modal-section">
       <h3>Architecture</h3>
       <p>Raspberry Pi 4 (2GB) running Raspberry Pi OS Lite 64-bit at static IP 10.0.0.10. All network devices route DNS through Pi-hole via router-level configuration — no per-device setup needed. Pi-hole forwards allowed queries to Unbound on localhost port 5335 for fully recursive resolution with no upstream DNS provider. Every query resolved directly from root servers — Google, Cloudflare, and the ISP never see what's being looked up.</p>
+
+      <div class="topology">
+        <div class="topology-hint">Click any component to learn what it does</div>
+        <div class="topo-grid">
+
+          <div class="topo-node">
+            <div class="topo-box" onclick="topoClick('internet',this)">
+              <div class="topo-icon">🌐</div>
+              <div class="topo-label">Internet</div>
+              <div class="topo-sub">Xfinity / Comcast</div>
+            </div>
+          </div>
+          <div class="topo-connector" id="line-1"></div>
+
+          <div class="topo-node">
+            <div class="topo-box" onclick="topoClick('gateway',this)">
+              <div class="topo-icon">📡</div>
+              <div class="topo-label">Xfinity Gateway</div>
+              <div class="topo-sub">10.0.0.1 · DNS → Pi</div>
+            </div>
+          </div>
+          <div class="topo-connector" id="line-2"></div>
+
+          <div class="topo-node">
+            <div class="topo-pi" id="topo-pi">
+              <div class="topo-pi-label">🍓 Raspberry Pi 4 — swifty</div>
+              <div class="topo-pi-sub">10.0.0.10 · static IP · Raspberry Pi OS Lite 64-bit</div>
+              <div class="topo-pi-services">
+                <span class="topo-service" onclick="topoClick('ufw',this)">UFW</span>
+                <span class="topo-service" onclick="topoClick('fail2ban',this)">Fail2ban</span>
+                <span class="topo-service" onclick="topoClick('pihole',this)">Pi-hole</span>
+                <span class="topo-service" onclick="topoClick('unbound',this)">Unbound</span>
+                <span class="topo-service" onclick="topoClick('wireguard',this)">WireGuard</span>
+                <span class="topo-service" onclick="topoClick('openvpn',this)">OpenVPN</span>
+                <span class="topo-service" onclick="topoClick('suricata',this)">Suricata</span>
+                <span class="topo-service" onclick="topoClick('duckdns',this)">DuckDNS</span>
+              </div>
+            </div>
+          </div>
+          <div class="topo-connector" id="line-3"></div>
+
+          <div class="topo-row">
+            <div class="topo-node">
+              <div class="topo-box" onclick="topoClick('zen6',this)">
+                <div class="topo-icon">📶</div>
+                <div class="topo-label">Zen6 Wi-Fi</div>
+                <div class="topo-sub">10.0.0.x · 2.4 + 5GHz</div>
+              </div>
+            </div>
+            <div class="topo-connector"></div>
+            <div class="topo-node">
+              <div class="topo-box" onclick="topoClick('orbi',this)">
+                <div class="topo-icon">🔁</div>
+                <div class="topo-label">Orbi Router</div>
+                <div class="topo-sub">192.168.1.x · DNS → Pi</div>
+              </div>
+            </div>
+            <div class="topo-connector"></div>
+            <div class="topo-node">
+              <div class="topo-box" onclick="topoClick('vpn',this)">
+                <div class="topo-icon">🔒</div>
+                <div class="topo-label">VPN Clients</div>
+                <div class="topo-sub">iPhone · Laptop</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="topo-info" id="topo-info">
+          <div class="topo-info-title" id="topo-info-title">← Click any component</div>
+          <div class="topo-info-text" id="topo-info-text">Hover over any node or service above to see what it does and why it was chosen.</div>
+        </div>
+      </div>
+
+      <div class="screenshot-slot"><div class="placeholder"><span>📸</span>screenshot — pi hardware or network diagram</div></div>
+      <div class="screenshot-caption">Raspberry Pi 4 — the hardware running the full stack</div>
     </div>
 
     <div class="modal-section">
@@ -258,6 +382,41 @@
         <li><strong>OpenVPN</strong> — Fallback VPN on TCP port 443. Port 443 = HTTPS — can't be blocked without breaking all web traffic. Works through every firewall including corporate networks.</li>
         <li><strong>Suricata IDS</strong> — Passive intrusion detection watching eth0. 52,000+ rules loaded. Detected real traffic patterns within hours of deployment including Discord usage and STUN traffic.</li>
       </ul>
+
+      <div style="display:flex;flex-direction:column;gap:20px;margin-top:24px;">
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>Pi-hole admin dashboard — http://10.0.0.10/admin</div></div>
+          <div class="screenshot-caption">Pi-hole — real query graphs and blocked domain count</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo systemctl status unbound</div></div>
+          <div class="screenshot-caption">Unbound — recursive DNS, 4+ days uptime, version 1.22.0</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo systemctl status suricata</div></div>
+          <div class="screenshot-caption">Suricata IDS — 52,000+ rules active and running</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo tail -20 /var/log/suricata/fast.log</div></div>
+          <div class="screenshot-caption">Suricata IDS — real alerts detected on the network</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo wg show</div></div>
+          <div class="screenshot-caption">WireGuard — active iPhone peer, handshake time, data transferred</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo systemctl status openvpn@server</div></div>
+          <div class="screenshot-caption">OpenVPN — listening on TCP 443, initialization sequence completed</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo ufw status verbose</div></div>
+          <div class="screenshot-caption">UFW — subnet-restricted rules, default deny incoming</div>
+        </div>
+        <div>
+          <div class="screenshot-slot"><div class="placeholder"><span>📸</span>sudo fail2ban-client status pihole-admin</div></div>
+          <div class="screenshot-caption">Fail2ban — pihole-admin jail active, watching for brute force</div>
+        </div>
+      </div>
     </div>
 
     <div class="modal-section">
@@ -315,6 +474,8 @@
     <div class="modal-section">
       <h3>What I learned</h3>
       <p>The most valuable lesson was learning to think in layers. UFW controls what gets in. Fail2ban handles repeat offenders. Pi-hole filters at the DNS layer. Unbound eliminates third-party visibility. Suricata watches everything that made it through all of that. Real security isn't one strong wall — it's many layers each catching what the others miss. That principle applies whether you're securing a Raspberry Pi or a Fortune 500 enterprise network.</p>
+      <div class="screenshot-slot"><div class="placeholder"><span>📸</span>nslookup doubleclick.net → 0.0.0.0</div></div>
+      <div class="screenshot-caption">Pi-hole blocking confirmed — doubleclick.net returns 0.0.0.0</div>
     </div>
 
     <div class="modal-section">
@@ -420,6 +581,18 @@
 <footer>© Javen Turner. Built and documented as a living portfolio — updated as projects ship.</footer>
 
 <script>
+  // Scroll progress bar + hide scroll indicator
+  const scrollBar=document.getElementById('scrollBar');
+  const scrollIndicator=document.getElementById('scrollIndicator');
+  window.addEventListener('scroll',()=>{
+    const scrollTop=window.scrollY;
+    const docHeight=document.documentElement.scrollHeight-window.innerHeight;
+    const progress=docHeight>0?(scrollTop/docHeight)*100:0;
+    scrollBar.style.width=Math.min(progress,100)+'%';
+    if(scrollTop>80)scrollIndicator.classList.add('hidden');
+    else scrollIndicator.classList.remove('hidden');
+  },{passive:true});
+
   // Theme
   const themeToggle=document.getElementById('themeToggle');
   function setTheme(t){document.documentElement.setAttribute('data-theme',t);themeToggle.textContent=t==='dark'?'☀':'🌙';localStorage.setItem('theme',t);}
@@ -448,7 +621,31 @@
   const aObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting&&!triggered){triggered=true;count('n1',1765,'+',1800);count('n2',389,'+',1400);count('n3',52000,'+',1800);count('n4',2,'',900);aObs.disconnect();}});},{threshold:.3});
   const as=document.getElementById('achievements');if(as)aObs.observe(as);
 
-  // Modal
+  // Topology
+  const topoData={
+    internet:{title:'Internet (Xfinity/Comcast)',text:'All traffic enters and exits through the Xfinity connection. The Pi never exposes services directly to the internet — only ports 51820 (WireGuard) and 443 (OpenVPN) have port forwarding enabled on the gateway.'},
+    gateway:{title:'Xfinity Gateway (10.0.0.1)',text:'Acts as the modem and router. DNS is configured to point all devices to 10.0.0.10 (Pi-hole). DHCP range set to minimize conflicts with Pi-hole. The gateway is the only device with a public IP.'},
+    ufw:{title:'UFW Firewall',text:'Default-deny incoming policy. Ports 53, 67, and 80 only reachable from 10.0.0.0/24. VPN ports open to internet. Principle of least privilege — even open ports are restricted by source IP.'},
+    fail2ban:{title:'Fail2ban',text:'Watches Pi-hole admin login attempts. Custom regex filter detects failed logins. Bans offending IPs via UFW for 1 day after 3 failed attempts in 45 minutes. Catches slow brute force attempts that space out requests.'},
+    pihole:{title:'Pi-hole (port 53)',text:'Network-wide DNS sinkhole. Every device on the network uses Pi-hole for DNS via router configuration — no per-device setup needed. Blocks ads, trackers, and malware domains before they ever reach your devices. Forwards allowed queries to Unbound.'},
+    unbound:{title:'Unbound (port 5335)',text:'Fully recursive DNS resolver. Queries go directly from Unbound to root DNS servers — no Google, Cloudflare, or ISP in the chain. DNSSEC validation enabled. DNS rebinding attack protection via private-address directives.'},
+    wireguard:{title:'WireGuard VPN (port 51820 UDP)',text:'Self-hosted VPN server. iPhone and laptop connect from anywhere in the world. VPN clients use Pi-hole for DNS — ad blocking works away from home. Split tunnel for home use prevents routing loops. DuckDNS provides stable hostname.'},
+    openvpn:{title:'OpenVPN (port 443 TCP)',text:'Fallback VPN for networks that block WireGuard. Port 443 is HTTPS — impossible to block without breaking all web traffic. Uses Elliptic Curve cryptography and tls-crypt-v2. Works through every corporate firewall, hotel, and restrictive network.'},
+    suricata:{title:'Suricata IDS',text:'Passive intrusion detection watching eth0. 52,000+ rules loaded via suricata-update. Detected real traffic patterns within hours of deployment — Discord DNS lookups, DuckDNS updates, STUN traffic. Logs to /var/log/suricata/fast.log.'},
+    duckdns:{title:'DuckDNS (toppick.duckdns.org)',text:'Free dynamic DNS service. A cron script runs every 5 minutes to update the hostname with the current public IP. Means VPN clients always connect to toppick.duckdns.org rather than a raw IP that changes when Xfinity assigns a new one.'},
+    zen6:{title:'Zen6 Wi-Fi (10.0.0.x)',text:'Main Wi-Fi network broadcasting on 2.4GHz and 5GHz. Devices get IPs from Xfinity DHCP and DNS from Pi-hole automatically. Everything on this network is filtered and protected by Pi-hole and monitored by Suricata.'},
+    orbi:{title:'Orbi Router (192.168.1.x)',text:'Separate router creating a second subnet for additional devices. DNS configured to point to Pi-hole (10.0.0.10) so all Orbi devices still get filtering. Creates a double-NAT situation — planned to be replaced by pfSense with proper VLANs.'},
+    vpn:{title:'VPN Clients (iPhone · Laptop)',text:'Remote devices connect via WireGuard (fast, UDP) or OpenVPN (fallback, TCP 443). Both use Pi-hole as DNS while connected — so ad blocking and malware filtering works even on mobile data or public Wi-Fi.'}
+  };
+  let activeTopoNode=null;
+  function topoClick(key,el){
+    document.querySelectorAll('.topo-box,.topo-service').forEach(e=>e.classList.remove('active'));
+    const d=topoData[key];
+    if(!d)return;
+    el.classList.add('active');
+    document.getElementById('topo-info-title').textContent=d.title;
+    document.getElementById('topo-info-text').textContent=d.text;
+  }
   function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
   function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
   function handleOverlayClick(e,id){if(e.target===document.getElementById(id)||e.target.classList.contains('modal-backdrop'))closeModal(id);}
